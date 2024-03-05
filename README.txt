@@ -12,6 +12,26 @@ deletar tarefas. Cada tarefa pode ter várias sub-tarefas associadas.
 e OpenFeign para integração REST com uma API pública, como a API de previsão do tempo OpenWeatherMap.
 3. **Modelagem de Dados**: Definir os modelos de dados para `Tarefa` e `SubTarefa`, onde uma `Tarefa` pode ter várias
 `domain.br.com.andmats.tarefas.SubTarefas` (relacionamento @OneToMany).
+@Entity
+@Getter
+@Setter
+public class Tarefa {
+
+    @Id
+    @GeneratedValue()
+    private UUID idTarefa;
+    @NotNull
+    private String nomeTarefa;
+    @OneToMany
+    List<SubTarefas> subTarefas;
+}
+
+@Entity
+public class SubTarefas {
+    private String tarefaNome;
+
+    private String descricao;
+}
 
 
 ### Fase 2: Configuração do Ambiente
